@@ -91,7 +91,6 @@ const styleSrcUrls = [
     "https://stackpath.bootstrapcdn.com/",
     "https://api.mapbox.com/",
     "https://api.tiles.mapbox.com/",
-    "https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap",
     "https://use.fontawesome.com/",
 ];
 const connectSrcUrls = [
