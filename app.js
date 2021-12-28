@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== "production") {
     require('dotenv').config();
 }
 
@@ -20,8 +20,7 @@ const campgroundsRoutes = require('./routes/campgrounds');
 const reviewsRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/users')
 const MongoStore = require('connect-mongo');
-const dbUrl = process.env.Db_URL ||'mongodb://localhost:27017/yelp-camp';
-//process.env.Db_URL ||
+const dbUrl = process.env.Db_URL //|| 'mongodb://localhost:27017/yelp-camp';
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
@@ -50,12 +49,12 @@ app.use(mongoSanitize({
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
 const store = MongoStore.create({
-    mongoUrl: dbUrl, 
+    mongoUrl: dbUrl,
     secret,
     touchAfter: 24 * 3600
 })
 
-store.on("error", function(e) {
+store.on("error", function (e) {
     console.log("SESSION STORE ERROR", e)
 })
 
@@ -130,7 +129,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
-    
+
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
